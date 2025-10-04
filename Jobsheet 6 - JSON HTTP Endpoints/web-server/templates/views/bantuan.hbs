@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+
+    body.nf-page {
+        display: block;
+        max-width: none;
+        margin: 0; padding: 0;
+        background: #141414;
+        color: #e5e5e5;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        overflow-x: hidden;
+    }
+
+    .nf-viewport {
+        width: 100svw;
+        height: 100dvh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        overflow: hidden;
+    }
+
+    .nf-page header { margin: 0; padding: clamp(12px, 2vmin, 20px) 4vw; }
+    .nf-page header a { color: #b3b3b3; text-decoration: none; margin-right: 16px; }
+    .nf-page header a:hover { color: #ffffff; }
+    .nf-page footer { margin: 0; padding: clamp(12px, 2vmin, 16px) 4vw; color: #8c8c8c; border-top: 1px solid rgba(255,255,255,0.12); }
+
+    .nf-main {
+        position: relative;
+        /* Allow vertical scroll if FAQ grows, avoid horizontal scroll */
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: grid;
+        place-items: center;
+        padding: clamp(16px, 4vmin, 40px) 4vw;
+    }
+
+    .card {
+        width: min(860px, 92vw);
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        padding: clamp(16px, 4vmin, 36px);
+        box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+
+    .card h1 { margin: 0 0 8px; font-size: clamp(24px, 4vw, 40px); font-weight: 800; }
+    .card p { margin: 0; color: #b3b3b3; font-size: clamp(14px, 2.2vw, 18px); line-height: 1.6; }
+    .nf-accent { color: #E50914; }
+
+    .nf-main::before {
+        content: "";
+        position: absolute; inset: 0;
+        pointer-events: none;
+        background: radial-gradient(120% 120% at 10% 10%, rgba(229,9,20,.08), transparent 60%),
+                                linear-gradient(180deg, rgba(0,0,0,.35), transparent 40%, rgba(0,0,0,.45));
+    }
+
+    /* FAQ styles */
+    .faq {
+        width: min(860px, 92vw);
+        margin-top: clamp(16px, 4vmin, 32px);
+        display: grid;
+        gap: clamp(8px, 2vmin, 14px);
+    }
+    .faq h2 {
+        margin: 0 0 8px;
+        font-size: clamp(20px, 3.6vw, 32px);
+        font-weight: 800;
+    }
+    .faq details {
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.12);
+    }
+    .faq summary {
+        list-style: none;
+        cursor: pointer;
+        padding: clamp(12px, 2.4vmin, 18px) clamp(14px, 3vmin, 22px);
+        position: relative;
+        font-weight: 700;
+        font-size: clamp(14px, 2.6vw, 18px);
+        color: #fff;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+        content: "+";
+        position: absolute;
+        right: clamp(12px, 3vmin, 20px);
+        top: 50%; transform: translateY(-50%);
+        font-size: 20px; line-height: 1;
+        color: #E50914;
+        transition: transform .2s ease;
+    }
+    .faq details[open] summary::after { content: "−"; transform: translateY(-50%); }
+    .faq .answer {
+        padding: clamp(12px, 2.4vmin, 18px) clamp(14px, 3vmin, 22px);
+        color: #b3b3b3;
+        font-size: clamp(13px, 2.3vw, 17px);
+        line-height: 1.65;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.0));
+    }
+</style>
+<body class="nf-page">
+    <div class="nf-viewport">
+        <header>
+            <a href="/">Home</a>
+            <a href="/tentang">Tentang</a>
+            <a href="/bantuan">Bantuan</a>
+        </header>
+        <main class="nf-main">
+            <section class="card">
+                <h1>Bantuan <span class="nf-accent">Aplikasi</span></h1>
+                <p>{{teksBantuan}}</p>
+            </section>
+            <section class="faq">
+                <h2>FAQ (Frequently Asked Questions)</h2>
+                <details>
+                    <summary>Bagaimana cara mengecek cuaca di lokasi saya?</summary>
+                    <div class="answer">Buka halaman beranda, ketik nama lokasi pada kolom input, lalu klik tombol Cari. Sistem akan menampilkan prediksi cuaca untuk lokasi tersebut.</div>
+                </details>
+                <details>
+                    <summary>Mengapa hasil cuaca tidak muncul?</summary>
+                    <div class="answer">Pastikan koneksi internet stabil dan alamat yang dimasukkan jelas. Jika masalah berlanjut, coba muat ulang halaman atau periksa kembali apakah server sudah berjalan pada port 4000.</div>
+                </details>
+                <details>
+                    <summary>Apa arti ikon dan teks pada prediksi cuaca?</summary>
+                    <div class="answer">Ikon dan teks merangkum kondisi cuaca (misalnya cerah, berawan, hujan) serta informasi tambahan seperti suhu dan kemungkinan hujan. Data bersumber dari layanan prediksi cuaca yang digunakan aplikasi.</div>
+                </details>
+            </section>
+        </main>
+        {{>footer}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+
+    body.nf-page {
+        display: block;
+        max-width: none;
+        margin: 0; padding: 0;
+        background: #141414;
+        color: #e5e5e5;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        overflow-x: hidden;
+    }
+
+    .nf-viewport {
+        width: 100svw;
+        height: 100dvh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        overflow: hidden;
+    }
+
+    .nf-page header { margin: 0; padding: clamp(12px, 2vmin, 20px) 4vw; }
+    .nf-page header a { color: #b3b3b3; text-decoration: none; margin-right: 16px; }
+    .nf-page header a:hover { color: #ffffff; }
+    .nf-page footer { margin: 0; padding: clamp(12px, 2vmin, 16px) 4vw; color: #8c8c8c; border-top: 1px solid rgba(255,255,255,0.12); }
+
+    .nf-main {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        padding: clamp(16px, 4vmin, 40px) 4vw;
+    }
+
+    .hero {
+        width: min(1200px, 92vw);
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        align-items: center;
+        gap: clamp(16px, 4vmin, 40px);
+    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; } }
+
+    .hero-title {
+        margin: 0;
+        font-weight: 800;
+        font-size: clamp(32px, 6vw, 72px);
+        color: #ffffff;
+        letter-spacing: .5px;
+        text-shadow: 0 2px 12px rgba(0,0,0,.6);
+    }
+    .hero-sub { margin: 10px 0 0; color: #b3b3b3; font-size: clamp(14px, 2.2vw, 20px); line-height: 1.5; }
+    .nf-accent { color: #E50914; }
+
+    .poster {
+        width: 100%;
+        max-width: 420px;
+        aspect-ratio: 2 / 3;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 12px 40px rgba(0,0,0,.6), 0 0 0 2px rgba(229, 9, 20, .6) inset;
+    }
+
+    .nf-main::before {
+        content: "";
+        position: absolute; inset: 0;
+        pointer-events: none;
+        background: radial-gradient(120% 120% at 10% 10%, rgba(229,9,20,.08), transparent 60%),
+                                linear-gradient(180deg, rgba(0,0,0,.35), transparent 40%, rgba(0,0,0,.45));
+    }
+</style>
+<body class="nf-page">
+    <div class="nf-viewport">
+        <header>
+            <a href="/">Home</a>
+            <a href="/tentang">Tentang</a>
+            <a href="/bantuan">Bantuan</a>
+        </header>
+        <main class="nf-main">
+            <section class="hero">
+                <div class="hero-copy">
+                    <h1 class="hero-title">Tentang <span class="nf-accent">saya</span></h1>
+                    <p class="hero-sub">Halo, saya Nurul Aldi. Saya jelmaan lorem ipsum dolores.</p>
+                </div>
+                <img class="poster" src="img/gambar.png" alt="Poster profil" style="width: 20vw; height: 60vh"> 
+            </section>
+        </main>
+        {{>footer}}
+    </div>
+</body>
+</html>
