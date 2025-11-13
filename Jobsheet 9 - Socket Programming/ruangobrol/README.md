@@ -89,6 +89,7 @@ Pada file `chat.js` di folder `public/js`, fungsi `socket.on` digunakan untuk me
 
 2,
 Pada saat anda melakukan proses chat seperti pada langkah 12 dan 13. Bukalah inspect pada browser anda. Lalu bukalah menu console. Lakukanlah proses chat dan investigasi apa yang ditampilkan pada console tersebut. Uraikan penjelasan anda dengan mengaitkannya ke baris kode yang menurut anda berhubungan dengan hal tersebut!
+
 ![alt text](public/img/soal2-job9.png)
 
 
@@ -426,6 +427,7 @@ Real-time bidirectional event-based communication memungkinkan klien dan server 
    - Server mengirimkan pembaruan data room secara real-time ke semua pengguna di room tertentu menggunakan `io.to().emit`.
 
 Dengan pendekatan ini, aplikasi dapat memberikan pengalaman komunikasi yang cepat dan responsif kepada pengguna.
+
 
 
 
